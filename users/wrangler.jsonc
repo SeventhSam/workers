@@ -1,0 +1,36 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "users",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-11-09",
+	"migrations": [
+		{
+			"new_sqlite_classes": [
+				"UserDataPlane"
+			],
+			"tag": "v1"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "UserDataPlane",
+				"name": "USER"
+			}
+		]
+	},
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "USER_CONTROL_PLANE",
+			"database_name": "user-control-plane",
+			"database_id": "afe7c10d-d7a7-4f62-a73b-7b9488131714",
+		}
+	]
+}

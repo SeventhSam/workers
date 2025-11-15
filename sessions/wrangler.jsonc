@@ -1,0 +1,32 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "sessions",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-11-11",
+	"observability": {
+		"enabled": true
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_classes": [
+				"SessionDataPlane"
+			]
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "SESSION_CONTROL_PLANE",
+			"database_name": "session-control-plane",
+			"database_id": "1e4698ee-14a7-49f8-87ba-482035057af5"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "SessionDataPlane",
+				"name": "SESSION",
+			}
+		]
+	},
+}

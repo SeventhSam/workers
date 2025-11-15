@@ -15,7 +15,10 @@
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
 		"deploy": "npm run build && wrangler deploy",
-		"cf-typegen": "wrangler types ./src/worker-configuration.d.ts"
+		"cf-typegen": "wrangler types ./src/worker-configuration.d.ts",
+		"shared": "npm run build && wrangler dev -c wrangler.jsonc -c ../users/wrangler.jsonc -c ../sessions/wrangler.jsonc",
+		"stypes": "wrangler types -c wrangler.jsonc -c ../users/wrangler.jsonc -c ../sessions/wrangler.jsonc",
+		"db": ""
 	},
 	"devDependencies": {
 		"@app/shared": "file:../shared",

@@ -74,20 +74,18 @@ export async function GET(event: RequestEvent): Promise<Response> {
                 }
             });
 
-        } else {
-
-            console.log("Establishing Session for Existing User " + googleUserId)
-            const session: SessionWithSessionId = await event.platform?.env.SESSIONS.createSession(secret, googleUserId);
-            let token = session.sessionId + "." + secret
-            setSessionTokenCookie(event, token, new Date(session.createdAt.getTime() + (60 * 60 * 24 * 5 * 1000)));
-            return new Response(null, {
-                status: 302,
-                headers: {
-                    Location: "/thanks"
-                }
-            });
         }
 
+        console.log("Establishing Session for Existing User " + googleUserId)
+        const session: SessionWithSessionId = await event.platform?.env.SESSIONS.createSession(secret, googleUserId);
+        let token = session.sessionId + "." + secret
+        setSessionTokenCookie(event, token, new Date(session.createdAt.getTime() + (60 * 60 * 24 * 5 * 1000)));
+        return new Response(null, {
+            status: 302,
+            headers: {
+                Location: "/thanks"
+            }
+        });
 
 
 

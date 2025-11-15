@@ -1,0 +1,2 @@
+-- Migration number: 0002 	 2025-11-15T15:28:14.892Z
+ALTER TABLE USERS ADD COLUMN email TEXT;
